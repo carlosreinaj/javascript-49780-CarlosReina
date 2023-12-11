@@ -22,19 +22,6 @@ const RASCADOR_GATOS = new Producto(10,"Rascador para Gatos",3500,"./assets/rasc
 
 const PRODUCTOSDIS = [ATRAPA_PELUSAS,CAMA_PARA_GATO,COMEDERO,CORREA_PERRO,DISPENSADOR_AGUA,GPS_MASCOTA,JUGUETE_MASCOTAS,PEINE_MASCOTAS,PERCHERO_PERROS,RASCADOR_GATOS];
 
-// const PRODUCTOSDIS = [
-//     { id: 1, nombre: 'Atrapa Pelusas', precio: 3000, img:'./assets/atrapa-pelusas.webp'},
-//     { id: 2, nombre: 'Cama para Gatos', precio: 2500, img: "./assets/cama-gato.webp"},
-//     { id: 3, nombre: 'Comedero', precio: 30 },
-//     { id: 4, nombre: 'Correa de Perros', precio: 30 },
-//     { id: 5, nombre: 'Dispensador de Agua', precio: 30 },
-//     { id: 6, nombre: 'GPS Mascota', precio: 30 },
-//     { id: 7, nombre: 'Juguete para Mascotas', precio: 30 },
-//     { id: 8, nombre: 'Peine para Mascotas', precio: 30 },
-//     { id: 9, nombre: 'Perchero para Perros', precio: 30 },
-//     { id: 10, nombre: 'Rascador para Gatos', precio: 30 },
-// ];
-
     // Función para agregar un producto al carrito
 function agregarAlCarrito(id, nombre, precio) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
