@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TIENDA</title>
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body>
+        <main>
+            <header>
+                <nav class="navbar">
+                    <ul class="list-navbar">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="./pages/carrito.html">Carrito</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section class="mainContainer">
+
+                <section class="filtro">
+                    <h2>Buscar Productos</h2>
+                    <form action="/buscar" method="get">
+                        <input type="text" name="query" placeholder="Buscar...">
+                        <button type="submit">Buscar</button>
+                    </form>
+                    <div class="categorias">
+                        <h2>Departamentos</h2>
+                        <button>Todas las Mascotas</button>
+                        <button>Perros</button>
+                        <button>Gatos</button>
+                        <a href="./pages/carrito.html">Ver Carrito (0)</a>
+                    </div>
+                    <div id="carrito">
+                        <h2>Productos de carrito</h2>
+                        <ul id="listaProductos"></ul>
+                
+                        <p>Total: <span id="total">0</span></p>
+                        <button onclick="vaciarCarrito()">Vaciar el carrito</button>
+                    </div>
+
+                </section><section id="productos" class="tiendaGallery">
+                    
+                </section>
+            </section>
+
+            <footer class="footer">
+                <p>© Carlos Reina 2023</p>
+            </footer>
+
+        </main>
+        <script src="./JS/index.js"></script>
+    </body>
+</html>
