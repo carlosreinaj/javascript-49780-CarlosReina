@@ -54,10 +54,48 @@ function agregarAlCarrito(id, nombre, precio) {
     }
 
     // Función para vaciar el carrito
-    function vaciarCarrito() {
-        localStorage.removeItem('carrito');
-        mostrarCarrito();
-    }
+    // function vaciarCarrito() {
+    //     localStorage.removeItem('carrito');
+    //     mostrarCarrito();
+    // }
+
+// Función para vaciar el carrito
+const VACIAR_CARRITO = document.getElementById("vaciarCarro");
+
+VACIAR_CARRITO.addEventListener("click", () =>{
+    Swal.fire({
+        title: "¿Seguro/a que desea vaciar el carrito?",
+        icon: "warning",
+        confirmButtonText: "Aceptar",
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.removeItem('carrito');
+            mostrarCarrito();
+            mostrarMensajeCarritoVaciado();
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            mostrarMensajeCancelacion();
+        }
+    });
+});
+
+
+function mostrarMensajeCarritoVaciado() {
+    Swal.fire({
+        title: "Ya no hay items en el carrito",
+        icon: "success",
+        confirmButtonText: "aceptar",
+    });
+}
+
+function mostrarMensajeCancelacion() {
+    Swal.fire({
+        title: "No se elimino ningun item",
+        icon: "info",
+        confirmButtonText: "cancelar",
+    });
+}
 
     // Función para generar tarjetas de productos
     function generarTarjetasProductos() {
@@ -74,9 +112,29 @@ function agregarAlCarrito(id, nombre, precio) {
                 <button id="boton${producto.id}" onclick="agregarAlCarrito(${producto.id}, '${producto.nombre}', ${producto.precio})">Añadir a Carrito</button>
             `;
             contenedorProductos.appendChild(productoElement);
+
+            const BOTON_TOASTIFY = productoElement.querySelector(`#boton${producto.id}`);
+            BOTON_TOASTIFY.addEventListener('click', () => {
+                Toastify({
+                    text:"Producto agregado al carrito",
+                    duration: 1000,
+                    position: "right",
+                    gravity: "top",
+                    style:{
+                        background: "#27246d"
+                    }
+                }).showToast();
+            });
         });
     }
     // Mostrar el carrito y generar las tarjetas al cargar la página
     mostrarCarrito();
     generarTarjetasProductos();
+
+
+    ///preguntas: 
+    //como hacer para que al darle cancelar en sweet alert, no se eliminen de iguial forma
+    // como hacer para que cuando haya 0 items en el carrito, este igual me diga que no hay nada
+
+
 

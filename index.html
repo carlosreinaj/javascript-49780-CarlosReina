@@ -5,18 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>TIENDA</title>
         <link rel="stylesheet" href="./css/style.css" />
+        <!-- ----link toastify----- -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     </head>
     <body>
+        <header>
+            <nav class="navbar">
+                <ul class="list-navbar">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="./pages/carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+        </header>
         <main>
-            <header>
-                <nav class="navbar">
-                    <ul class="list-navbar">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="./pages/carrito.html">Carrito</a></li>
-                    </ul>
-                </nav>
-            </header>
-
             <section class="mainContainer">
 
                 <section class="filtro">
@@ -37,7 +38,8 @@
                         <ul id="listaProductos"></ul>
                 
                         <p>Total: <span id="total">0</span></p>
-                        <button onclick="vaciarCarrito()">Vaciar el carrito</button>
+                        <!-- <button onclick="vaciarCarrito()">Vaciar el carrito</button> -->
+                        <button id="vaciarCarro">Vaciar el carrito</button>
                     </div>
 
                 </section><section id="productos" class="tiendaGallery">
@@ -50,6 +52,11 @@
             </footer>
 
         </main>
+            <!-- ---sweet alert---- -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- toastify -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <!-- ---my script--- -->
         <script src="./JS/index.js"></script>
     </body>
 </html>
