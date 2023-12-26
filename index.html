@@ -27,31 +27,26 @@
                         <button type="submit">Buscar</button>
                     </form>
                     <div class="categorias">
-                        <h2>Departamentos</h2>
-                        <button>Todas las Mascotas</button>
-                        <button>Perros</button>
-                        <button>Gatos</button>
-                        <a href="./pages/carrito.html">Ver Carrito (0)</a>
+                        <ul>
+                            <li><a href="./pages/carrito.html" class="botonMenu botonCarrito">🛒Ver Carrito</a><span id="numerito" class="numerito">0</span></li>
+                        </ul>
                     </div>
                     <div id="carrito">
                         <h2>Productos de carrito</h2>
                         <ul id="listaProductos"></ul>
-                
                         <p>Total: <span id="total">0</span></p>
                         <!-- <button onclick="vaciarCarrito()">Vaciar el carrito</button> -->
-                        <button id="vaciarCarro">Vaciar el carrito</button>
+                        <button id="vaciarCarro" class="vaciarCarrito">Vaciar el carrito</button>
                     </div>
 
                 </section><section id="productos" class="tiendaGallery">
                     
                 </section>
             </section>
-
-            <footer class="footer">
-                <p>© Carlos Reina 2023</p>
-            </footer>
-
         </main>
+        <footer class="footer">
+            <p>© Carlos Reina 2023</p>
+        </footer>
             <!-- ---sweet alert---- -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- toastify -->

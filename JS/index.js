@@ -8,24 +8,24 @@ class Producto{
     }
 }
 
-const ATRAPA_PELUSAS = new Producto(1,"Atrapa Pelusas",3000,"./assets/atrapa-pelusas.webp");
-const CAMA_PARA_GATO = new Producto(2,"Cama para Gatos",2500,"./assets/cama-gato.webp");
-const COMEDERO = new Producto(3,"Comedero",1500,"./assets/comedero.webp");
-const CORREA_PERRO = new Producto(4,"Correa de Perros",2500,"./assets/correa-perro.webp");
-const DISPENSADOR_AGUA = new Producto(5,"Dispensador de Agua",2000,"./assets/dispensador-de-agua-mascotas.webp");
-const GPS_MASCOTA = new Producto(6,"GPS Mascota",2500,"./assets/gps-traquer-mascotas.webp");
-const JUGUETE_MASCOTAS = new Producto(7,"Juguete para Mascotas",3500,"./assets/juguetes-mascotas.webp");
-const PEINE_MASCOTAS = new Producto(8,"Peine para Mascotas",3500,"./assets/peine-mascotas.webp");
-const PERCHERO_PERROS = new Producto(9,"Perchero para Perros",2500,"./assets/perchero-perros.webp");
-const RASCADOR_GATOS = new Producto(10,"Rascador para Gatos",3500,"./assets/rascador-gatos.webp");
+const ATRAPA_PELUSAS = new Producto(1,"Atrapa Pelusas",3000,"../assets/atrapa-pelusas.webp", 1);
+const CAMA_PARA_GATO = new Producto(2,"Cama para Gatos",2500,"../assets/cama-gato.webp", 1);
+const COMEDERO = new Producto(3,"Comedero",1500,"./assets/comedero.webp", 1);
+const CORREA_PERRO = new Producto(4,"Correa de Perros",2500,"../assets/correa-perro.webp", 1);
+const DISPENSADOR_AGUA = new Producto(5,"Dispensador de Agua",2000,"../assets/dispensador-de-agua-mascotas.webp", 1);
+const GPS_MASCOTA = new Producto(6,"GPS Mascota",2500,"../assets/gps-traquer-mascotas.webp", 1);
+const JUGUETE_MASCOTAS = new Producto(7,"Juguete para Mascotas",3500,"../assets/juguetes-mascotas.webp", 1);
+const PEINE_MASCOTAS = new Producto(8,"Peine para Mascotas",3500,"../assets/peine-mascotas.webp", 1);
+const PERCHERO_PERROS = new Producto(9,"Perchero para Perros",2500,"../assets/perchero-perros.webp", 1);
+const RASCADOR_GATOS = new Producto(10,"Rascador para Gatos",3500,"../assets/rascador-gatos.webp", 1);
 
 
 const PRODUCTOSDIS = [ATRAPA_PELUSAS,CAMA_PARA_GATO,COMEDERO,CORREA_PERRO,DISPENSADOR_AGUA,GPS_MASCOTA,JUGUETE_MASCOTAS,PEINE_MASCOTAS,PERCHERO_PERROS,RASCADOR_GATOS];
 
     // Función para agregar un producto al carrito
-function agregarAlCarrito(id, nombre, precio) {
+function agregarAlCarrito(id, nombre, precio, cantidad, img) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    carrito.push({ id, nombre, precio });
+    carrito.push({ id, nombre, precio, cantidad, img});
     localStorage.setItem('carrito', JSON.stringify(carrito));
     mostrarCarrito();
 }
@@ -34,6 +34,7 @@ function agregarAlCarrito(id, nombre, precio) {
     function mostrarCarrito() {
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         const listaProductos = document.getElementById('listaProductos');
+        // const carritoProductos = document.getElementById('carritoProductos');
         const totalElement = document.getElementById('total');
         let total = 0;
 
@@ -52,12 +53,6 @@ function agregarAlCarrito(id, nombre, precio) {
 
         totalElement.textContent = '$' + total;
     }
-
-    // Función para vaciar el carrito
-    // function vaciarCarrito() {
-    //     localStorage.removeItem('carrito');
-    //     mostrarCarrito();
-    // }
 
 // Función para vaciar el carrito
 const VACIAR_CARRITO = document.getElementById("vaciarCarro");
@@ -109,7 +104,7 @@ function mostrarMensajeCancelacion() {
             <div class="card-body">
                 <h4>${producto.nombre}</h4>
                 <p>$${producto.precio}</p>
-                <button id="boton${producto.id}" onclick="agregarAlCarrito(${producto.id}, '${producto.nombre}', ${producto.precio})">Añadir a Carrito</button>
+                <button id="boton${producto.id}" onclick="agregarAlCarrito(${producto.id}, '${producto.nombre}', ${producto.precio}, 01, '${producto.img}')">Añadir a Carrito</button>
             `;
             contenedorProductos.appendChild(productoElement);
 
@@ -138,3 +133,17 @@ function mostrarMensajeCancelacion() {
 
 
 
+//funcion actualizar numerito
+
+function actualizarNumerito(){
+    let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    numerito.innerText = nuevoNumerito;
+}
+
+localStorage.setItem("producto-en-carrito", JSON.stringify(productosEnCarrito))
+
+const productosEnCarrito = JSON.parse(localStorage.getItem("carrito"));
+
+const carritoVacio =document.getElementById("carritoVacio");
+// const carritoProducto =document.getElementById("carritoProductos");
+const carritoAcciones =document.getElementById("carritoAcciones");

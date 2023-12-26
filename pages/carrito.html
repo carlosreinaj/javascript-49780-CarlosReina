@@ -18,7 +18,88 @@
     </header>
 
     <main class= "mainDos">
-        <section class="section-cart-container">
+        <section class="mainContainerCarrito">
+
+            <section class="filtro">
+                <div id="carrito">
+                    <h2>Productos de carrito</h2>
+                    <ul id="listaProductos"></ul>
+                    <p>Total: <span id="total">0</span></p>
+                    <!-- <button onclick="vaciarCarrito()">Vaciar el carrito</button> -->
+                    <button id="vaciarCarro" class="vaciarCarrito">Vaciar el carrito</button>
+                </div>
+                <div class="categorias">
+                    <ul>
+                        <li><a href="#" class="botonMenu botonCarrito active">🛒Carrito</a><span id="numerito" class="numerito">0</span></li>
+                        <li><a href="../index.html" class="botonMenu botonVolver">🔙Volver a la tienda</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="cart-container">
+                <div id="carritoVacio" class="carritoVacio disabled">
+                    <img src="../assets/Vectorcart-removebg-preview.png" alt="cart" />
+                    <h2>AUN NO TIENES PRODUCTOS EN TU CARRITO</h2>
+                    <p>Encuentra los mejores productos, a los mejores precios.</p>
+                    <a href="../index.html">COMPRAR AHORA</a>
+                </div>
+
+                <div id="carritoProductos" class="carritoProductos disabled">
+                    <div class="carritoProducto">
+                        <img class="carritoProductoImg" src="../assets/atrapa-pelusas.webp" alt="">
+                        <div class="carritoProductoNombre">
+                            <small>Nombre</small>
+                            <h3>Atrapa Pelusas</h3>
+                        </div>
+                        <div class="carritoProductoCantidad">
+                            <small>Cantidad</small>
+                            <p>01</p>
+                        </div>
+                        <div class="carritoProductoPrecio">
+                            <small>Precio</small>
+                            <p>$3000</p>
+                        </div>
+                        <div class="carritoProductoSubtotal">
+                            <small>Subtotal</small>
+                            <p>$3000</p>
+                        </div>
+                        <button class="carritoProductoEliminar">🗑️</button>
+                    </div>
+                    <div class="carritoProducto">
+                        <img class="carritoProductoImg" src="../assets/cama-gato.webp" alt="">
+                        <div class="carritoProductoNombre">
+                            <small>Nombre</small>
+                            <h3>Cama Gato</h3>
+                        </div>
+                        <div class="carritoProductoCantidad">
+                            <small>Cantidad</small>
+                            <p>01</p>
+                        </div>
+                        <div class="carritoProductoPrecio">
+                            <small>Precio</small>
+                            <p>$2500</p>
+                        </div>
+                        <div class="carritoProductoSubtotal">
+                            <small>Subtotal</small>
+                            <p>$2500</p>
+                        </div>
+                        <button class="carritoProductoEliminar">🗑️</button>
+                    </div>
+                </div>
+                <div id="carritoAcciones" class="carritoAcciones disabled">
+                    <div class="carritoAccionesIz">
+                        <div class="carritoAccionesTotal">
+                            <p>Total:</p>
+                            <p id="total">$5000</p>
+                        </div>
+                        <div class="carritoAccionesComprar">
+                            <button id="comprarAhora">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+            </section>   
+        </section>
+        <!-- <section class="section-cart-container">
             <div class="cart-container">
                 <img src="../assets/Vectorcart-removebg-preview.png" alt="cart" />
                 <h2>AUN NO TIENES PRODUCTOS EN TU CARRITO</h2>
@@ -46,7 +127,7 @@
                 <button class="carrito-cta">Procesar tu Compra</button>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main>
 
     <footer class="footer">
@@ -61,5 +142,6 @@
 
     <!-- -----my script----- -->
     <script src="../JS/index.js"></script>
+    <script src="../JS/carrito.js"></script>
 </body>
 </html>

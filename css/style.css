@@ -5,17 +5,20 @@
   /* border: red 2px solid; */
 }
 
+ul{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+}
+
 main{
     font-family: "Times New Roman", Times, serif;
     background-color: lightseagreen;
-    height: 100%;
+    /* height: 100vh; */
   }
 
-  .mainDos{
-      font-family: "Times New Roman", Times, serif;
-      background-color: lightseagreen;
-      height: 100vh;
-  }
 
 .navbar{
   background-color: skyblue;
@@ -47,17 +50,23 @@ margin-top: 25px;
     display: flex;
     flex-direction: row;
     padding: 40px;
+    justify-content: space-evenly;
+    align-items: center;
   }
 
   .filtro{
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     width: 300px;
     height: 100%;
     background-color: #46725c;
     color: #fff;
     padding: 30px;
     gap: 30px;
+    position: sticky;
+    height: 100vh;
+    font-weight: bold;
   }
   .categorias{
     display: flex;
@@ -111,6 +120,7 @@ margin-top: 25px;
   .card-body p{
     color: black;
     font-size: 1rem;
+    font-weight: bold;
   }
   
   .card-body button{
@@ -122,6 +132,7 @@ margin-top: 25px;
     border-radius: 5px;
     text-align: center;
     margin-top: 5px;
+    font-weight: bold;
   }
   .card-body button:hover{
     background-color: #745821; 
@@ -140,13 +151,12 @@ margin-top: 25px;
 
 /* -----------------CARRITO---------------- */
 
-.section-cart-container{
-  width: 100%;
-  height: 100%;
+.mainContainerCarrito{
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 100px;
+  gap: 50px;
+  padding: 50px;
 }
 
 .cart-container{
@@ -154,7 +164,24 @@ margin-top: 25px;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.404);
+  padding: 25px 35px;
+  margin-top: 2rem;
+  text-decoration: none;
+  color: black;
+  border-radius: .3125rem;
+  text-align: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.carritoVacio{
+  display: flex;
+  /* display: none; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
   padding: 25px 35px;
   margin-top: 2rem;
   text-decoration: none;
@@ -178,6 +205,7 @@ margin-top: 25px;
 .cart-container p{
   font-size: 16px;
   color: black;
+  font-weight: bold;
   }
   
 .cart-container a{
@@ -227,4 +255,129 @@ margin-top: 25px;
   background-color: #745821; 
 }
 
+.carritoProductos{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
+
+.carritoProducto{
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgray;
+  padding: 1rem;
+  gap: 100px;
+  border-radius: 1rem;
+  align-items: center;
+}
+
+
+.carritoProductoImg{
+  width: 4rem;
+  border-radius: 1rem;
+}
+
+.carritoProducto small{
+  font-size: 0.75rem;
+}
+
+.carritoProductoEliminar{
+  border: 0;
+  background-color: white;
+  padding: 6px 4px;
+  border-radius: 5px;
+}
+
+.carritoProductoEliminar:hover{
+  background-color: #ff3a41;
+  
+}
+
+.carritoAcciones{
+  display: flex;
+  justify-content: center;
+}
+
+.carritoAccionesTotal{
+  display: flex;
+  justify-content: center;
+  background-color: lightgray;
+  width: 150px;
+  height: 50px;
+  color: black;
+  padding: 16px 0;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.carritoAccionesComprar button{
+  background-color: #D4C08B;
+  width: 150px;
+  height: 50px;
+  color: black;
+  padding: 16px 0;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.carritoAccionesComprar button:hover{
+  background-color: #745821; 
+}
+
+.vaciarCarrito{
+  border: 0;
+  display: flex;
+  justify-content: center;
+  background-color: lightgray;
+  width: 150px;
+  height: 50px;
+  color: black;
+  padding: 16px 0;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.vaciarCarrito:hover{
+  background-color:#27246d;
+  color: white;
+}
+
+  .botonCategoria {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid #adb5bd;
+    background: #adb5bd9c;
+  }
+  .botonCategoria:hover {
+    background: #fff;
+    color: #adb5bd
+  }
+
+.disabled{
+  display:none;
+} 
+
+.numerito{
+  background-color: #76b496;
+  color: black;
+  padding: 0.15rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.carritoProductos{
+  list-style: none;
+}
