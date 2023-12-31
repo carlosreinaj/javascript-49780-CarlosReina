@@ -10,7 +10,7 @@ class Producto{
 
 const ATRAPA_PELUSAS = new Producto(1,"Atrapa Pelusas",3000,"../assets/atrapa-pelusas.webp", 1);
 const CAMA_PARA_GATO = new Producto(2,"Cama para Gatos",2500,"../assets/cama-gato.webp", 1);
-const COMEDERO = new Producto(3,"Comedero",1500,"./assets/comedero.webp", 1);
+const COMEDERO = new Producto(3,"Comedero",1500,"../assets/comedero.webp", 1);
 const CORREA_PERRO = new Producto(4,"Correa de Perros",2500,"../assets/correa-perro.webp", 1);
 const DISPENSADOR_AGUA = new Producto(5,"Dispensador de Agua",2000,"../assets/dispensador-de-agua-mascotas.webp", 1);
 const GPS_MASCOTA = new Producto(6,"GPS Mascota",2500,"../assets/gps-traquer-mascotas.webp", 1);
@@ -23,12 +23,53 @@ const RASCADOR_GATOS = new Producto(10,"Rascador para Gatos",3500,"../assets/ras
 const PRODUCTOSDIS = [ATRAPA_PELUSAS,CAMA_PARA_GATO,COMEDERO,CORREA_PERRO,DISPENSADOR_AGUA,GPS_MASCOTA,JUGUETE_MASCOTAS,PEINE_MASCOTAS,PERCHERO_PERROS,RASCADOR_GATOS];
 
     // Función para agregar un producto al carrito
+
+const productosEnCarrito = [];
+const numerito =document.getElementById("numerito");
+const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
 function agregarAlCarrito(id, nombre, precio, cantidad, img) {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    carrito.push({ id, nombre, precio, cantidad, img});
+    const nuevoProducto = { id, nombre, precio, cantidad, img };
+
+    // Buscar el producto en el carrito por su ID
+    const productoExistente = carrito.find(producto => producto.id === id);
+
+    if (productoExistente) {
+        // Si el producto ya está en el carrito, aumentar la cantidad
+        productoExistente.cantidad += cantidad;
+    } else {
+        // Si el producto no está en el carrito, agregarlo
+        carrito.push(nuevoProducto);
+    }
+    actualizarNumerito();
     localStorage.setItem('carrito', JSON.stringify(carrito));
     mostrarCarrito();
 }
+function actualizarNumerito(){
+    let nuevoNumerito = carrito.reduce((acc, producto) => acc + producto.cantidad, 0)
+    numerito.innerText = nuevoNumerito;
+}
+actualizarNumerito()
+
+
+
+// const productosEnCarrito = [];
+
+// function agregarAlCarrito(id, nombre, precio, cantidad, img) {
+//     const carritoLocalStorage = JSON.parse(localStorage.getItem('carrito')) || [];
+//     const nuevoProducto = { id, nombre, precio, cantidad, img };
+//     const productoAgregado = Producto.find(producto => producto.id === id);
+//     productosEnCarrito.push(nuevoProducto);
+//     carritoLocalStorage.push(nuevoProducto);
+//     localStorage.setItem('carrito', JSON.stringify(carritoLocalStorage));
+//     mostrarCarrito();
+// }
+// function agregarAlCarrito(id, nombre, precio, cantidad, img) {
+//     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+//     carrito.push({ id, nombre, precio, cantidad, img});
+//     localStorage.setItem('carrito', JSON.stringify(carrito));
+//     mostrarCarrito();
+// }
 
     // Función para mostrar los productos en el carrito
     function mostrarCarrito() {
@@ -91,6 +132,9 @@ function mostrarMensajeCancelacion() {
         confirmButtonText: "cancelar",
     });
 }
+    //const agregar productos al carrito//funcion agregar productos al carrito (x2)
+
+const AGREGAR_PRODUCTOS = document.querySelectorAll(".productoAgregar");
 
     // Función para generar tarjetas de productos
     function generarTarjetasProductos() {
@@ -104,46 +148,26 @@ function mostrarMensajeCancelacion() {
             <div class="card-body">
                 <h4>${producto.nombre}</h4>
                 <p>$${producto.precio}</p>
-                <button id="boton${producto.id}" onclick="agregarAlCarrito(${producto.id}, '${producto.nombre}', ${producto.precio}, 01, '${producto.img}')">Añadir a Carrito</button>
+                <button class="productoAgregar" id="boton${producto.id}">Añadir a Carrito</button>
+            </div>
             `;
             contenedorProductos.appendChild(productoElement);
-
-            const BOTON_TOASTIFY = productoElement.querySelector(`#boton${producto.id}`);
-            BOTON_TOASTIFY.addEventListener('click', () => {
-                Toastify({
-                    text:"Producto agregado al carrito",
-                    duration: 1000,
-                    position: "right",
-                    gravity: "top",
-                    style:{
-                        background: "#27246d"
-                    }
-                }).showToast();
-            });
+             // Obtén el botón dinámicamente por su ID y asigna el manejador de eventos
+        const boton = document.getElementById(`boton${producto.id}`);
+        boton.addEventListener('click', () => {
+            agregarAlCarrito(producto.id, producto.nombre, producto.precio, 1, producto.img);
+            Toastify({
+                text:"Producto agregado al carrito",
+                duration: 1000,
+                position: "right",
+                gravity: "top",
+                style:{
+                    background: "#27246d"
+                }
+            }).showToast(); // Llamar a la función para mostrar el mensaje
         });
-    }
-    // Mostrar el carrito y generar las tarjetas al cargar la página
-    mostrarCarrito();
-    generarTarjetasProductos();
-
-
-    ///preguntas: 
-    //como hacer para que al darle cancelar en sweet alert, no se eliminen de iguial forma
-    // como hacer para que cuando haya 0 items en el carrito, este igual me diga que no hay nada
-
-
-
-//funcion actualizar numerito
-
-function actualizarNumerito(){
-    let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
-    numerito.innerText = nuevoNumerito;
+    });
 }
+mostrarCarrito();
+generarTarjetasProductos();
 
-localStorage.setItem("producto-en-carrito", JSON.stringify(productosEnCarrito))
-
-const productosEnCarrito = JSON.parse(localStorage.getItem("carrito"));
-
-const carritoVacio =document.getElementById("carritoVacio");
-// const carritoProducto =document.getElementById("carritoProductos");
-const carritoAcciones =document.getElementById("carritoAcciones");
