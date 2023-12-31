@@ -84,16 +84,6 @@ function eliminarDelCarrito(e) {
 cargarProductosCarrito();
 
 
-// funcion vaciar carrito
-botonVaciar.addEventListener("click", vaciarCarrito);
-
-function vaciarCarrito(){
-    carrito.lenght = 0;
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    cargarProductosCarrito();
-}
-
-
 //funcion total
 const total = document.getElementById("totalCarrito")
 function actualizarTotal(){
