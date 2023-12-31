@@ -89,7 +89,7 @@ actualizarNumerito()
             `;
             listaProductos.appendChild(listItem);
 
-            total +=producto.precio;
+            total +=(producto.precio*producto.cantidad);
         });
 
         totalElement.textContent = '$' + total;
